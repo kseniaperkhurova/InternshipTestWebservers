@@ -1,0 +1,9 @@
+.tableAppointments {
+  width: auto;
+  float: left;
+}
+.tdAppintments {
+  width: 19%;
+  margin: 5%;
+  text-align: center;
+}

@@ -1,0 +1,38 @@
+<div class="wrapper">
+  <form [formGroup]="practitionerForm">
+    <mat-form-field class="formPractitioner">
+      <mat-label> oude naam</mat-label>
+      <input matInput type="text" value="{{ displayName }}" />
+    </mat-form-field>
+    <mat-form-field class="formPractitioner">
+      <mat-label>nieuwe voornaam</mat-label>
+      <input matInput type="text" formControlName="firstName" />
+    </mat-form-field>
+    <mat-form-field class="formPractitioner">
+      <mat-label>nieuwe naam</mat-label>
+      <input matInput type="text" formControlName="lastName" />
+    </mat-form-field>
+    <mat-form-field class="formPractitioner">
+      <mat-label>oude discipline</mat-label>
+      <input matInput type="text" value="{{ discipline }}" />
+    </mat-form-field>
+    <mat-form-field class="formPractitioner">
+      <mat-label>discipline</mat-label>
+      <mat-select [(value)]="discipline">
+        <mat-option
+          *ngFor="let discipline of disciplines"
+          [value]="discipline"
+          >{{ discipline }}</mat-option
+        >
+      </mat-select>
+    </mat-form-field>
+    <button
+      mat-raised-button
+      class="formPractitioner"
+      id="button"
+      (click)="updatePrtactitioner()"
+    >
+      Aanpassen
+    </button>
+  </form>
+</div>

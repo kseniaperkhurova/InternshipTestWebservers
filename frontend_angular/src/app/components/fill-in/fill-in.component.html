@@ -1,0 +1,86 @@
+<form>
+  <div class="paragraph">
+    <mat-form-field appearance="fill">
+      <p>Kies uw doelgroep</p>
+      <mat-label></mat-label>
+      <mat-select [(value)]="selectedGroup">
+        <mat-option>None</mat-option>
+        <mat-option value="client">Cliënt</mat-option>
+        <mat-option value="practitioner">Behandelaar</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <div class="paragraph" *ngIf="selectedGroup == ''">
+    <mat-form-field appearance="fill">
+      <p>Kies een naam</p>
+      <mat-label></mat-label>
+      <mat-select [(value)]="selectedName">
+        <mat-option value="option">None</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <div class="paragraph" *ngIf="selectedGroup == 'client'">
+    <mat-form-field appearance="fill">
+      <p>Kies een naam</p>
+      <mat-label></mat-label>
+      <mat-select [(value)]="selectedClient">
+        <mat-option *ngFor="let client of clients" [value]="client">{{
+          client.displayName
+        }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+
+  <div class="paragraph" *ngIf="selectedGroup == 'practitioner'">
+    <mat-form-field appearance="fill">
+      <p>Kies een naam</p>
+      <mat-label></mat-label>
+      <mat-select [(value)]="selectedPractitioner">
+        <mat-option
+          *ngFor="let practitioner of practitioners"
+          [value]="practitioner"
+          >{{ practitioner.displayName }}</mat-option
+        >
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <div class="paragraph">
+    <mat-form-field appearance="fill">
+      <p>Kies start datum</p>
+      <mat-label></mat-label>
+      <input
+        matInput
+        [matDatepicker]="picker1"
+        (dateInput)="onStartDate($event.value)"
+      />
+
+      <mat-datepicker-toggle
+        matIconSuffix
+        [for]="picker1"
+      ></mat-datepicker-toggle>
+      <mat-datepicker #picker1></mat-datepicker>
+    </mat-form-field>
+  </div>
+  <div class="paragraph">
+    <mat-form-field appearance="fill">
+      <p>Kies eind datum</p>
+      <mat-label></mat-label>
+      <input
+        matInput
+        [matDatepicker]="picker2"
+        (dateInput)="onEndDate($event.value)"
+      />
+
+      <mat-datepicker-toggle
+        matIconSuffix
+        [for]="picker2"
+      ></mat-datepicker-toggle>
+      <mat-datepicker #picker2></mat-datepicker>
+    </mat-form-field>
+  </div>
+</form>
+<button class="buttonToonAgenda" (click)="getAppoinments()">Toon agenda</button>
+
+<div class="appointments">
+  <app-appointments [appointments]="getAppointments"></app-appointments>
+</div>

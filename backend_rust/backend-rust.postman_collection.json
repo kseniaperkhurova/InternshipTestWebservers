@@ -1,0 +1,263 @@
+{
+	"info": {
+		"_postman_id": "332e6728-9165-4ccd-bcf3-067c5ce06c69",
+		"name": "backend-rust",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "26148244"
+	},
+	"item": [
+		{
+			"name": "get all clients",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"200 status\", function(){\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"const jsonData = pm.response.json();\r",
+							"pm.test(\"lenght is not equal null\", () => {\r",
+							"  pm.expect(jsonData != null).to.eql(true);\r",
+							" \r",
+							" \r",
+							"});\r",
+							"pm.test(\"list is not equal empty\", () => {\r",
+							"  pm.expect(jsonData != []).to.eql(true); \r",
+							"});\r",
+							"pm.test(\"get list with clients\", () => {\r",
+							"  pm.expect(jsonData).to.be.an(\"array\");\r",
+							"  pm.expect(jsonData[0].display_name).to.be.a(\"string\");\r",
+							"  pm.expect(jsonData[0].client_id).to.be.a(\"string\");\r",
+							" \r",
+							"});\r",
+							"\r",
+							"// pm.test(\"Response time\", function(){\r",
+							"//     pm.expect(pm.response.responseTime).to.be.below(400);\r",
+							"// });\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9501/get/clients/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9501",
+					"path": [
+						"get",
+						"clients",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get all practitioners",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"200 status\", function(){\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"const jsonData = pm.response.json();\r",
+							"pm.test(\"list is not equal null\", () => {\r",
+							"  pm.expect(jsonData != null).to.eql(true);\r",
+							" \r",
+							" \r",
+							"});\r",
+							"pm.test(\"list is not equal empty\", () => {\r",
+							"  pm.expect(jsonData != []).to.eql(true);\r",
+							" \r",
+							" \r",
+							"});\r",
+							"pm.test(\"get list with practitioners\", () => {\r",
+							"  pm.expect(jsonData).to.be.an(\"array\");\r",
+							"  pm.expect(jsonData[0].display_name).to.be.a(\"string\");\r",
+							"  pm.expect(jsonData[0].practitioner_id).to.be.a(\"string\");\r",
+							"  pm.expect(jsonData[0].discipline).to.be.a(\"string\");\r",
+							" \r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response time\", function(){\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(400);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9501/get/practitioners/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9501",
+					"path": [
+						"get",
+						"practitioners",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get appointments for client",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"200 status\", function(){\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"const jsonData = pm.response.json();\r",
+							"pm.test(\"lenght is not equal null\", () => {\r",
+							"  pm.expect(jsonData != null).to.eql(true);\r",
+							" \r",
+							" \r",
+							"});\r",
+							"pm.test(\"list is not equal empty\", () => {\r",
+							"  pm.expect(jsonData != []).to.eql(true); \r",
+							"});\r",
+							"pm.test(\"get list with appointments\", () => {\r",
+							"  pm.expect(jsonData).to.be.an(\"array\");\r",
+							"  pm.expect(jsonData[0].id).to.be.a(\"string\");\r",
+							"  pm.expect(jsonData[0].date).to.be.a(\"string\");\r",
+							"  pm.expect(jsonData[0].start_time).to.be.a(\"string\");\r",
+							"  pm.expect(jsonData[0].end_time).to.be.a(\"string\");\r",
+							"  pm.expect(jsonData[0].discipline).to.be.a(\"string\");\r",
+							"  pm.expect(jsonData[0].name).to.be.a(\"string\");\r",
+							" \r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response time\", function(){\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(400);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9501/get/client/appointments?id=c8f511de-46a2-9bba-3b25-11e966489f6a&start_date=2023-01-01&end_date=2023-03-01",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9501",
+					"path": [
+						"get",
+						"client",
+						"appointments"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "c8f511de-46a2-9bba-3b25-11e966489f6a"
+						},
+						{
+							"key": "start_date",
+							"value": "2023-01-01"
+						},
+						{
+							"key": "end_date",
+							"value": "2023-03-01"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get appointments for practitioner",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"200 status\", function(){\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"const jsonData = pm.response.json();\r",
+							"pm.test(\"lenght is not equal null\", () => {\r",
+							"  pm.expect(jsonData != null).to.eql(true);\r",
+							" \r",
+							" \r",
+							"});\r",
+							"pm.test(\"list is not equal empty\", () => {\r",
+							"  pm.expect(jsonData != []).to.eql(true); \r",
+							"});\r",
+							"pm.test(\"get list with appointments\", () => {\r",
+							"  pm.expect(jsonData).to.be.an(\"array\");\r",
+							"  pm.expect(jsonData[0].id).to.be.a(\"string\");\r",
+							"  pm.expect(jsonData[0].date).to.be.a(\"string\");\r",
+							"  pm.expect(jsonData[0].start_time).to.be.a(\"string\");\r",
+							"  pm.expect(jsonData[0].end_time).to.be.a(\"string\");\r",
+							"  pm.expect(jsonData[0].discipline).to.be.a(\"string\");\r",
+							"  pm.expect(jsonData[0].name).to.be.a(\"string\");\r",
+							" \r",
+							"});\r",
+							"pm.test(\"Response time\", function(){\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(400);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9501/get/practitioner/appointments?id=caf42efa-4525-67b8-7036-cfffcebb9af1&start_date=2023-01-01&end_date=2023-04-01",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9501",
+					"path": [
+						"get",
+						"practitioner",
+						"appointments"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "caf42efa-4525-67b8-7036-cfffcebb9af1"
+						},
+						{
+							"key": "start_date",
+							"value": "2023-01-01"
+						},
+						{
+							"key": "end_date",
+							"value": "2023-04-01"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

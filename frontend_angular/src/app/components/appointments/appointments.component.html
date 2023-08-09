@@ -1,0 +1,18 @@
+<table class="tableAppointments">
+  <thead>
+    <tr>
+      <th class="tdAppintments>">specialisme</th>
+      <th class="tdAppintments">start tijd</th>
+      <th class="tdAppintments">eind tijd</th>
+      <th class="tdAppintments">name</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let appointment of appointments">
+      <td class="tdAppintments">{{ appointment.discipline }}</td>
+      <td class="tdAppintments">{{ appointment.startTime }}</td>
+      <td class="tdAppintments">{{ appointment.endTime }}</td>
+      <td class="tdAppintments">{{ appointment.name }}</td>
+    </tr>
+  </tbody>
+</table>

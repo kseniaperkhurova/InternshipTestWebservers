@@ -1,0 +1,46 @@
+<div class="wrapper" *ngFor="let item of practitioners">
+  <mat-form-field class="practitionerView">
+    <input
+      hidden="hidden"
+      matInput
+      placeholder="Placeholder"
+      ng
+      value="{{ item.id }}"
+      disabled="true"
+    />
+    <input
+      matInput
+      placeholder="Placeholder"
+      value="{{ item.displayName }}"
+      disabled="true"
+    />
+  </mat-form-field>
+  <mat-form-field class="practitionerView">
+    <input
+      matInput
+      placeholder="Placeholder"
+      value="{{ item.discipline }}"
+      disabled="true"
+    />
+  </mat-form-field>
+
+  <button
+    mat-button
+    class="practitionerViewButton"
+    [routerLink]="['/updatepractitioners']"
+    [queryParams]="{
+      id: item.id,
+      displayName: item.displayName,
+      discipline: item.discipline
+    }"
+  >
+    Update
+  </button>
+  <button
+    mat-button
+    class="practitionerViewButton"
+    (click)="delete(item.id, item.displayName, item.discipline)"
+  >
+    Verwijder
+  </button>
+</div>

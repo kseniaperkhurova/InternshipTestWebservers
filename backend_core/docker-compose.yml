@@ -1,0 +1,13 @@
+version: '3.4'
+
+services:
+  casebasedschedule.api:
+    image: ${DOCKER_REGISTRY-}casebasedscheduleapi
+    build:
+      context: .
+      dockerfile: src/Services/CaseBasedSchedule/CaseBasedSchedule.Api/Dockerfile
+    depends_on:
+     - sqldata
+  sqldata:
+   image: mcr.microsoft.com/mssql/server:2019-latest 
+

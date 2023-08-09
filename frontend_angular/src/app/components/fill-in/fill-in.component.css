@@ -1,0 +1,19 @@
+.paragraph {
+  margin: 1%;
+  flex: auto;
+  width: 15%;
+  display: block;
+  float: left;
+}
+.buttonToonAgenda {
+  margin: 1%;
+  width: 13%;
+  height: 110px;
+  background-color: white;
+  border-radius: 2%;
+  background-color: rgb(233, 233, 233);
+  border-color: azure;
+}
+.appointments {
+  display: block;
+}
